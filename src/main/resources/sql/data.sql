@@ -1,0 +1,1 @@
+INSERT INTO demo_user (user_account_id, user_password, user_name, user_age) VALUES ('demo', null, 'demo-user', 20);
