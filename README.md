@@ -1,1 +1,1 @@
-spring-security-oauth2-demo project
+spring-security6-demo project
