@@ -1,23 +1,33 @@
 package com.example.demo.config;
 
+import com.example.demo.security.MyJdbcUserDetailsManager;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.*;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.*;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+
+import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class WebSecurityConfig {
+    private final DataSource dataSource;
 
     @Bean
     public UserDetailsService userDetailsService() {
-        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
-        // withDefaultPasswordEncoder is only for demo. do not use this method in real case.
-        manager.createUser(User.withDefaultPasswordEncoder().username("user").password("password").roles("USER").build());
+        MyJdbcUserDetailsManager manager = new MyJdbcUserDetailsManager();
+        manager.setDataSource(dataSource);
         return manager;
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
     @Bean
@@ -27,7 +37,7 @@ public class WebSecurityConfig {
                 .frameOptions().disable()
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers("/**").permitAll()
+                .requestMatchers("/**").authenticated()
                 .and()
                 .csrf()
                 .ignoringRequestMatchers("/h2/**").disable()

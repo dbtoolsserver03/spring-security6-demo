@@ -1,1 +1,2 @@
-INSERT INTO demo_user (user_account_id, user_password, user_name, user_age) VALUES ('demo', null, 'demo-user', 20);
+insert into AUTHORITIES (AUTH_NAME, AUTH_ENABLED) values ( 'USER', 1 );
+insert into AUTHORITIES (AUTH_NAME, AUTH_ENABLED) values ( 'ADMIN', 1 );

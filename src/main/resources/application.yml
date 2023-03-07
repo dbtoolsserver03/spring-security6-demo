@@ -10,7 +10,7 @@ spring:
         trace: false
         web-allow-others: false
   datasource:
-    url: jdbc:h2:~/h2db/db/spring-security-oauth2-demo;MODE=MYSQL;AUTO_SERVER=TRUE
+    url: jdbc:h2:~/h2db/db/spring-security6-demo;MODE=MYSQL;AUTO_SERVER=TRUE
     username: sa
     password: 1234
     driverClassName: org.h2.Driver
@@ -23,4 +23,4 @@ spring:
     defer-datasource-initialization: true
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
-      ddl-auto: create
+      ddl-auto: create-drop
