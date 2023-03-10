@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>spring security6 demo - sign up</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <form class="form-signin" method="post" action="javascript:validation">
+            <h2 class="form-signin-heading">Please sign up</h2>
+            <p>
+                <label for="username" class="sr-only">Username</label>
+                <input type="text" id="username" name="username" class="form-control" placeholder="Username" required="" autofocus="">
+            </p>
+            <p>
+                <label for="password" class="sr-only">Password</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="">
+            </p>
+            <p>
+                <label for="passwordCheck" class="sr-only">Check password</label>
+                <input type="password" id="passwordCheck" name="passwordCheck" class="form-control" placeholder="Password" required="">
+            </p>
+            <p>
+                <label for="name" class="sr-only">name</label>
+                <input type="text" id="name" name="name" class="form-control" placeholder="name" required="" autofocus="">
+            </p>
+            <p>
+                <label for="age" class="sr-only">age</label>
+                <input type="number" id="age" name="age" class="form-control" placeholder="age" required="" autofocus="">
+            </p>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+        </form>
+    </div>
+</body>
+<script>
+    const validation = function (form) {
+        console.log(form);
+        alert('validation')
+    }
+</script>
+</html>

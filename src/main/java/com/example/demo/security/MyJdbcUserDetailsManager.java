@@ -4,10 +4,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 
 public class MyJdbcUserDetailsManager extends JdbcUserDetailsManager {
-    private String usersByUsernameQuery = "select user_id, user_account_id, user_password, user_ from demo_user where user_account_id = ?";
+    public static final String ROLE_PREFIX = "ROLE_";
+    private final String usersByUsernameQuery = "select * from users where id = ?";
+    private final String authoritiesByUsernameQuery = "select ua.user_id, auth.auth_name from user_authority ua inner join authorities auth on ua.authority_id = auth.id where id = ?";
 
     public MyJdbcUserDetailsManager() {
+        super.setRolePrefix(ROLE_PREFIX);
         super.setUsersByUsernameQuery(this.usersByUsernameQuery);
+        super.setAuthoritiesByUsernameQuery(this.authoritiesByUsernameQuery);
     }
 
     @Override

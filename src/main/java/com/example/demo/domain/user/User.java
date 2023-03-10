@@ -1,8 +1,8 @@
 package com.example.demo.domain.user;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
+import org.hibernate.Hibernate;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -11,10 +11,11 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
-@Data
 @Entity
 @Table(name = "users", indexes = {@Index(name = "id_idx", columnList = "id")})
+@Getter @Setter @ToString
 public class User implements UserDetails {
     public static final Integer PASSWORD_EXPIRED_TERM_DAYS = 90;
 
@@ -58,6 +59,7 @@ public class User implements UserDetails {
     @OneToMany(fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
+    @ToString.Exclude
     private List<UserAuthority> userAuthorities;
 
     public User() {
@@ -110,5 +112,18 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return this.isAccountNonExpired() && this.isAccountNonLocked() && this.isCredentialsNonExpired();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        User user = (User) o;
+        return getId() != null && Objects.equals(getId(), user.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }

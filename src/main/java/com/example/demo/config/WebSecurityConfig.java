@@ -37,11 +37,11 @@ public class WebSecurityConfig {
                 .frameOptions().disable()
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers("/**").authenticated()
+                .requestMatchers("/**").permitAll()
+                .requestMatchers("/h2/**").hasRole("ADMIN")
                 .and()
-                .csrf()
-                .ignoringRequestMatchers("/h2/**").disable()
-                .formLogin();
+                .formLogin()
+                .loginPage("/sign-in");
         return http.build();
     }
 
