@@ -1,11 +1,11 @@
 package com.example.demo.security;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 
-
-@Data
+@Getter @Setter
+@RequiredArgsConstructor
 @Entity
 @Table(name = "authorities")
 public class Authority implements GrantedAuthority {

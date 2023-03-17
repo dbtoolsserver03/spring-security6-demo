@@ -2,11 +2,13 @@ package com.example.demo.domain.user;
 
 import com.example.demo.security.Authority;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-@Data
+@Getter @Setter
 @Entity
 @Table(name = "user_authority")
 public class UserAuthority {
@@ -26,7 +28,14 @@ public class UserAuthority {
     @Column(name = "created_dt")
     private LocalDateTime createdDt;
 
-    @Column(name = "created_by")
-    private String createdBy;
+    public UserAuthority() {
+    }
+
+    @Builder
+    public UserAuthority(String userId, Authority authority, LocalDateTime createdDt) {
+        this.userId = userId;
+        this.authority = authority;
+        this.createdDt = createdDt;
+    }
 
 }

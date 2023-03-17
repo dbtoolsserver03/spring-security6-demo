@@ -17,7 +17,7 @@ import java.util.Objects;
 @Table(name = "users", indexes = {@Index(name = "id_idx", columnList = "id")})
 @Getter @Setter @ToString
 public class User implements UserDetails {
-    public static final Integer PASSWORD_EXPIRED_TERM_DAYS = 90;
+    public static final Long PASSWORD_EXPIRED_TERM_DAYS = 90L;
 
     @Id
     @Column(name = "id", nullable = false, unique = true, length = 50)
