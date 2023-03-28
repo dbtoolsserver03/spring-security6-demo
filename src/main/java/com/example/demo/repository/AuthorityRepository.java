@@ -1,6 +1,6 @@
 package com.example.demo.repository;
 
-import com.example.demo.security.Authority;
+import com.example.demo.security.user.Authority;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 

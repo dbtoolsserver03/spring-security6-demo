@@ -1,4 +1,4 @@
-package com.example.demo.security;
+package com.example.demo.security.user;
 
 import com.example.demo.domain.user.User;
 import com.example.demo.service.UserService;
@@ -10,7 +10,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import java.util.Optional;
 
 @RequiredArgsConstructor
-public class CustomizedUserDetailsManager implements UserDetailsService {
+public class UserDetailsServiceImpl implements UserDetailsService {
     private final UserService userService;
 
     @Override

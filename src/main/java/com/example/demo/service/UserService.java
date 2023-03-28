@@ -5,12 +5,9 @@ import com.example.demo.domain.user.UserAuthority;
 import com.example.demo.repository.AuthorityRepository;
 import com.example.demo.repository.UserAuthorityRepository;
 import com.example.demo.repository.UserRepository;
-import com.example.demo.security.Authority;
+import com.example.demo.security.user.Authority;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

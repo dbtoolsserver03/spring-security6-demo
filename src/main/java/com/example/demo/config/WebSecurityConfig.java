@@ -1,6 +1,6 @@
 package com.example.demo.config;
 
-import com.example.demo.security.CustomizedUserDetailsManager;
+import com.example.demo.security.user.UserDetailsServiceImpl;
 import com.example.demo.security.endpoint.Oauth2RequestEntityConverter;
 import com.example.demo.security.authentication.BasicAuthenticationFailureHandler;
 import com.example.demo.security.authentication.BasicAuthenticationSuccessHandler;
@@ -37,7 +37,7 @@ public class WebSecurityConfig {
     @Bean
     public UserDetailsService userDetailsService() {
         userService.setPasswordEncoder(passwordEncoder());
-        return new CustomizedUserDetailsManager(userService);
+        return new UserDetailsServiceImpl(userService);
     }
 
     @Bean

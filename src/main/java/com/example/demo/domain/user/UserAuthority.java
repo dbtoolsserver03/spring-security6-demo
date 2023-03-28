@@ -1,6 +1,6 @@
 package com.example.demo.domain.user;
 
-import com.example.demo.security.Authority;
+import com.example.demo.security.user.Authority;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
