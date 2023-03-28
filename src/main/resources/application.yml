@@ -1,7 +1,16 @@
 server:
-  port: 8088
+  port: 9999
 
+# spring start
 spring:
+  config:
+    import:
+      - classpath:oauth2.yml
+
+  main:
+    allow-circular-references: true
+    allow-bean-definition-overriding: true
+
   h2:
     console:
       enabled: true
@@ -9,20 +18,30 @@ spring:
       settings:
         trace: false
         web-allow-others: false
+
   datasource:
     url: jdbc:h2:~/h2db/db/spring-security6-demo;MODE=MYSQL;AUTO_SERVER=TRUE
     username: sa
     password: 1234
     driverClassName: org.h2.Driver
+
   sql:
     init:
       mode: always
       platform: h2
       data-locations: classpath:sql/data.sql
+
   jpa:
     defer-datasource-initialization: true
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: create-drop
+
   thymeleaf:
     cache: false
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+# spring end
